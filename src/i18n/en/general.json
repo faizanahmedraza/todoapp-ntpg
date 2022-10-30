@@ -1,0 +1,6 @@
+{
+    "CREATE": "{name} has been successfully created!",
+    "UPDATE": "{name} has been successfully upated!",
+    "DELETE": "{name} has been successfully deleted!",
+    "NOT_FOUND": "{name} id {value} not found!" 
+}

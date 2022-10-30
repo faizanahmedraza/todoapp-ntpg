@@ -1,0 +1,228 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateTodoInput {
+  """description of the user"""
+  description: String!
+
+  """title of the user"""
+  title: String!
+
+  """id of the user"""
+  userId: Int!
+
+  """id of the user schedule"""
+  userScheduleId: Int!
+}
+
+input CreateUserInput {
+  address: String!
+  email: String!
+  name: String!
+  password: String
+  phone: String!
+}
+
+input CreateUserScheduleInput {
+  """description of the user schedule"""
+  description: String
+
+  """duration of the user schedule"""
+  duration: String
+
+  """end date of the user schedule"""
+  endedAt: String!
+
+  """start date of the user schedule"""
+  startedAt: String!
+
+  """id of the user"""
+  userId: Int!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type LoginResponse {
+  access_token: String!
+  user: User!
+}
+
+input LoginUserInput {
+  password: String!
+  username: String!
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): String!
+  createUser(createUserInput: CreateUserInput!): String!
+  createUserSchedule(createUserScheduleInput: CreateUserScheduleInput!): String!
+  login(loginUserInput: LoginUserInput!): LoginResponse!
+  removeTodo(removeTodo: RemoveTodoInput!): String!
+  removeUser(id: Int!): String!
+  removeUserSchedule(removeSchedule: RemoveUserScheduleInput!): String!
+  signup(signupUserInput: CreateUserInput!): SignUpResponse!
+  updateTodo(updateTodoInput: UpdateTodoInput!): String!
+  updateUser(updateUserInput: UpdateUserInput!): String!
+  updateUserSchedule(updateUserScheduleInput: UpdateUserScheduleInput!): String!
+}
+
+type Query {
+  todo(id: Int!): Todo!
+  user(id: Int!): User!
+  userSchedule(id: Int!): UserSchedule!
+}
+
+input RemoveTodoInput {
+  """id of the todo task"""
+  id: Int!
+
+  """id of the user"""
+  userId: Int!
+
+  """id of the user schedule"""
+  userScheduleId: Int!
+}
+
+input RemoveUserScheduleInput {
+  """id of the user schedule"""
+  id: Int!
+
+  """id of the user"""
+  userId: Int!
+}
+
+type SignUpResponse {
+  access_token: String
+  user: User
+}
+
+type Todo {
+  """created date time of the user"""
+  created_at: Date!
+
+  """description of the todo task"""
+  description: String!
+
+  """id of the todo task"""
+  id: Int!
+
+  """title of the todo task"""
+  title: String!
+
+  """updated date time of the user"""
+  updated_at: Date!
+
+  """user related to this model"""
+  user: User!
+
+  """user schedule related to this model"""
+  userSchedule: UserSchedule!
+}
+
+input UpdateTodoInput {
+  """description of the user"""
+  description: String
+
+  """id of the todo task"""
+  id: Int!
+
+  """title of the user"""
+  title: String
+
+  """id of the user"""
+  userId: Int
+
+  """id of the user schedule"""
+  userScheduleId: Int
+}
+
+input UpdateUserInput {
+  address: String
+  email: String
+
+  """id of the user"""
+  id: Int!
+  name: String
+  password: String
+  phone: String
+}
+
+input UpdateUserScheduleInput {
+  """description of the user schedule"""
+  description: String
+
+  """duration of the user schedule"""
+  duration: String
+
+  """end date of the user schedule"""
+  endedAt: String
+
+  """id of the user schedule"""
+  id: Int!
+
+  """start date of the user schedule"""
+  startedAt: String
+
+  """id of the user"""
+  userId: Int
+}
+
+type User {
+  """address of the user"""
+  address: String!
+
+  """created date time of the user"""
+  created_at: Date!
+
+  """email of the user"""
+  email: String!
+
+  """id of the user"""
+  id: Int!
+
+  """name of the user"""
+  name: String!
+
+  """phone of the user"""
+  phone: String!
+  todoTasks: [Todo!]!
+
+  """todo tasks of the user"""
+  todos: [Todo!]!
+
+  """updated date time of the user"""
+  updated_at: Date!
+  userSchedules: [UserSchedule!]!
+}
+
+type UserSchedule {
+  """created date time of the user_schedule"""
+  created_at: Date!
+
+  """description of the user schedule"""
+  description: String
+
+  """duration of user schedule"""
+  duration: String!
+
+  """end date of the user schedule"""
+  endedAt: Date!
+
+  """id of the user"""
+  id: Int!
+
+  """start date of the user schedule"""
+  startedAt: Date!
+  todoTasks: [Todo!]!
+
+  """todos related to user schedule"""
+  todos: [Todo!]!
+
+  """updated date time of the user_schedule"""
+  updated_at: Date!
+
+  """userId of the user"""
+  user: User!
+}
